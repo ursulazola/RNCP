@@ -215,7 +215,6 @@ Cette partie décrit l'API Flask plus en détails : les routes disponibles, la m
 
 ### D. Erreurs possibles
 
-|---|---|---|
 1. Erreur 401 : Clé API invalide ou absente. 
    - La cause : L'en-tête `X-API-Key` est manquant ou ne correspond à aucune clé du fichier `.env`. La réponse est `{"error": "Clé API invalide ou absente"}`.
 
