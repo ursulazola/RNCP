@@ -3,14 +3,10 @@ Les instructions et le code ont été faits via un PC Windows.
 ## I. Introduction
 
 L’objectif du projet est de construire un pipeline de données permettant de :
-<<<<<<< HEAD
-1. Collecter les données depuis des différentes sources ;
-=======
-1. Collecter les données depuis de différentes sources ;
->>>>>>> 298212b (RNCP)
-2. Produire un jeu de données final propre et cohérent;
-3. Créer une base SQL finale exploitable ;
-4. Exposer via une API un/des indicateur(s) métier simple(s) 
+1. Collecter les données depuis différentes sources.
+2. Produire un jeu de données final propre et cohérent.
+3. Créer une base SQL finale exploitable.
+4. Exposer via une API un/des indicateur(s) métier simple(s).
 
 ## II. Installer les dépendances
 
@@ -35,17 +31,9 @@ Cette étape doit être réalisée avant le lancement de l'API.
   
   Afin d'exécuter l'api, il faut d'abord créer le fichier `.env` dans le dossier `RNCP` contenant le projet :
 
-<<<<<<< HEAD
-  - Le fichier .env sert à stocker la clé API  en dehors du code, elle permettra à accéder aux données
-    via le terminal sans la copier pour des raisons de sécurité. La clé API sert à protéger l'accès à l'API.
-
-  - Le fichier .env.example que vous trouverez dans le dossier sert d'exemple au fichier env. Vous pouvez l'utiliser comme modèle afin de créer le contenu du fichier .env. Vous devrez placer au lieu de `Saisir_la_clé_API` votre mot de passe qui sera la clé API. Faites attention à ne pas placer d'espaces avant ou après le =.
-=======
-   - Le fichier .env sert à stocker la clé API  en dehors du code, elle permettra d'accéder aux données
-    via le terminal sans la copier pour des raisons de sécurité. La clé API sert à protéger l'accès à l'API.
+   - Le fichier .env sert à stocker la clé API  en dehors du code, elle permettra d'accéder aux données via le terminal sans la copier pour des raisons de sécurité. La clé API sert à protéger l'accès à l'API.
 
    - Le fichier .env.example que vous trouverez dans le dossier sert d'exemple au fichier env. Vous pouvez l'utiliser comme modèle afin de créer le contenu du fichier .env. Vous devrez placer au lieu de `Saisir_la_clé_API` votre mot de passe qui sera la clé API. Faites attention à ne pas placer d'espaces avant ou après le =.
->>>>>>> 298212b (RNCP)
   
   ### B. Lancer l'API 
   
@@ -79,20 +67,6 @@ L'API est lancée mais on ne peut pas encore afficher les données dans le termi
   
 3. Maintenant que la clé a été chargée les données seront disponibles  en local à l'adresse `http://127.0.0.1:5000` via  trois chemins d'accès (endpoints) :
 
-<<<<<<< HEAD
-  - `/health`, qui permet de vérifier si l'API fonctionne.
-  - `/sales-by-country`, qui renvoie les ventes par pays.
-  - `/sales-by-category`, qui renvoie les ventes par catégorie.
-  
-4. Afin d’interroger l’API, en fonction de l’endpoint auquel on souhaite accéder, il faudra exécuter dans le terminal “deux” la commande :
-
-  - Pour `/health` :
-  `curl.exe -H "X-API-Key: $env:API_Key" http://127.0.0.1:5000/health`
-  -  Pour `/sales-by-country`:
-  `curl.exe -H "X-API-Key: $env:API_Key" http://127.0.0.1:5000/sales-by-country`
-  - Pour `/sales-by-category`:
-  `curl.exe -H "X-API-Key: $env:API_Key" http://127.0.0.1:5000/sales-by-category`
-=======
    - `/health`, qui permet de vérifier si l'API fonctionne.
    - `/sales-by-country`, qui renvoie les ventes par pays.
    - `/sales-by-category`, qui renvoie les ventes par catégorie.
@@ -105,17 +79,12 @@ L'API est lancée mais on ne peut pas encore afficher les données dans le termi
    `curl.exe -H "X-API-Key: $env:API_Key" http://127.0.0.1:5000/sales-by-country`
    - Pour `/sales-by-category`:
    `curl.exe -H "X-API-Key: $env:API_Key" http://127.0.0.1:5000/sales-by-category`
->>>>>>> 298212b (RNCP)
     
   ##### Les données sont affichées.
 
 5. Il faut maintenant exécuter ce code dans le terminal afin de retirer la variable API_KEY de son environnement (pour des raisons de sécurité) :
 
-<<<<<<< HEAD
-- `Remove-Item Env:API_KEY`
-=======
  - `Remove-Item Env:API_KEY`
->>>>>>> 298212b (RNCP)
 
 ## VI. Les principaux fichiers du projet :
 
@@ -136,19 +105,11 @@ Le fichier pipeline contient 3 fonctions afin d'obtenir tables_finales.db .
    - transform() contient le nettoyage et la fusion des tables afin d'obtenir le dataframe final et les agrégations sales_by_country et sales_by_category.
    - load() : permet de convertir les dataframes en tables SQL, d'afficher la table principale et les agrégations.
 
-<<<<<<< HEAD
-4. `tables_finales.db`,c'est une base SQLite qui contient sept tables :
-  - Une table factuelle : `orders` (données sur les commandes) qui une fois transformée et fusionnée avec les tables dimensionnelles est nommée `orders_final`.
-  - Des tables dimensionnelles : `books_scrap_category` ( données scrapées des livres et les données par catégorie de livre), `countries` (Données par pays), `channels` (Données par canal d'acquisition),  et `exchange_rate` (Les taux de change par date).
-  - Des tables des données agrégées : `sales_by_country` (revenus/bénéfices par pays) et `sales_by_category` (revenus/bénéfices par category).
-  - Seules  `sales_by_country` et`sales_by_category` sont utilisées par l’API, pour les endpoints /sales-by-country et /sales-by-category.
-=======
 4. `tables_finales.db` : c'est une base SQLite qui contient sept tables :
    - Une table factuelle : `orders` (données sur les commandes) qui une fois transformée et fusionnée avec les tables dimensionnelles est nommée `orders_final`.
    - Des tables dimensionnelles : `books_scrap_category` ( données scrapées des livres et les données par catégorie de livre), `countries` (Données par pays), `channels` (Données par canal d'acquisition),  et `exchange_rate` (Les taux de change par date).
    - Des tables de données agrégées : `sales_by_country` (revenus/bénéfices par pays) et `sales_by_category` (revenus/bénéfices par catégorie).
    - Seules  `sales_by_country` et`sales_by_category` sont utilisées par l’API, pour les endpoints /sales-by-country et /sales-by-category.
->>>>>>> 298212b (RNCP)
 
 5. `api.py` : Ce fichier est une API REST qui permet  d'exposer les données du fichier tables_finales.db. Elle propose trois endpoints présentés auparavant. Tous les endpoints sont protégés par une clé API. Les clés valides sont lues depuis la variable d’environnement API_KEY (fichier .env).
 
@@ -161,21 +122,12 @@ Le fichier pipeline contient 3 fonctions afin d'obtenir tables_finales.db .
 
 8. `.gitignore` sert à masquer les fichiers suivants lors de la publication sur GitHub :
 
-<<<<<<< HEAD
-  -  `.env` et tous les `.env.*`, mais pas `.env.example`.
-  - `__pycache__/` et `*.pyc`, les fichiers générés par Python
-  - `venv/` et `.venv/`, les environnements virtuels ;
-  - `*.log`, les fichiers de logs ;
-  - `.ipynb_checkpoints/`, les sauvegardes automatiques de notebooks ;
-  - `.vscode/`, les réglages de l’éditeur.
-=======
    -  `.env` et tous les `.env.*`, mais pas `.env.example`.
    - `__pycache__/` et `*.pyc`, les fichiers générés par Python
    - `venv/` et `.venv/`, les environnements virtuels ;
    - `*.log`, les fichiers de logs ;
    - `.ipynb_checkpoints/`, les sauvegardes automatiques de notebooks ;
    - `.vscode/`, les réglages de l’éditeur.
->>>>>>> 298212b (RNCP)
 
 9. `.env` : C'est le fichier, créé par l'utilisateur, qui contient la clé API réelle. Il est lu par `api.py` (variable `API_KEY`) et n'est pas publié sur GitHub, car il est masqué par le fichier `.gitignore`.
 
@@ -184,17 +136,10 @@ Le fichier pipeline contient 3 fonctions afin d'obtenir tables_finales.db .
 
 ## VII. Utiliser l’authentification par clé SSH
 
-<<<<<<< HEAD
-Cette section est dédiée à l'utilisation de la clé SSH. Il est supposé que le dépot a été créé,que Git a été initialisé dans le projet et qu’au moins un commit a été effectué.
-
-L'authentification SSH permet de prouver à GitHub que l'on a le droit de publier sur le dépôt, sans saisir de mot de passe à chaque `git push`.
-  -  Indications : 
-=======
 Cette section est dédiée à l'utilisation de la clé SSH. Il est supposé que le dépot a été créé, que Git a été initialisé dans le projet et qu’au moins un commit a été effectué.
 
 L'authentification SSH permet de prouver à GitHub que l'on a le droit de publier sur le dépôt, sans saisir de mot de passe à chaque `git push`.
    -  Indications : 
->>>>>>> 298212b (RNCP)
       Dans les commandes ci-dessous, remplacer `<username>` par votre nom d'utilisateur GitHub. 
       On suppose que le dépôt GitHub s'appelle aussi `RNCP`.
 
@@ -202,51 +147,16 @@ L'authentification SSH permet de prouver à GitHub que l'on a le droit de publie
 
 2. Créer une clé SSH avec ce code :
 
-<<<<<<< HEAD
-  - `ssh-keygen -t ed25519 -C "votre_email@example.com"`
-  - Appuyer sur Entrée pour toutes les questions (chemin par défaut, pas de mot de passe).
-
-3. Exécuter ce code dans le terminal afin de récupérer la clé SSH :
-  - `cat ~/.ssh/id_ed25519.pub`
-=======
    - `ssh-keygen -t ed25519 -C "votre_email@example.com"`
    - Appuyer sur Entrée pour toutes les questions (chemin par défaut, pas de mot de passe).
 
 3. Exécuter ce code dans le terminal afin de récupérer la clé SSH :
    - `cat ~/.ssh/id_ed25519.pub`
->>>>>>> 298212b (RNCP)
 
 4. Copier la clé affichée en entier (elle commence par `ssh-ed25519`).
 
 5. Ajouter la clé sur GitHub :
 
-<<<<<<< HEAD
-  - Aller sur : https://github.com/settings/keys
-  - Cliquer sur `New SSH key`
-  - Donner un titre à la clé, puis coller la clé
-  - Enregistrer
-
-6. Vérifier la connexion SSH :
-
-  - `ssh -T git@github.com`
-  - À la première connexion, le terminal demande de confirmer l'empreinte de GitHub : répondre `yes`. Un message de confirmation doit apparaître :
-  `Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.`
-
-7. Lier le projet local au dépôt GitHub.
-
-  - `git branch -M main`
-  - `git remote add origin git@github.com:<username>/RNCP.git`
-  - Si le remote existe déjà vous aurez l'erreur « remote origin already exists », exécuter ce code à la place:
-  `git remote set-url origin git@github.com:<username>/RNCP.git`
-
-8. Envoyer le code sur GitHub :
-
-  `git push -u origin main`
-
-9. Vérification dans le terminal (Cela doit afficher au moins un commit):
-
-  `git log --oneline`
-=======
    - Aller sur : https://github.com/settings/keys
    - Cliquer sur `New SSH key`
    - Donner un titre à la clé, puis coller la clé
@@ -272,7 +182,6 @@ L'authentification SSH permet de prouver à GitHub que l'on a le droit de publie
 9. Vérification dans le terminal (Cela doit afficher au moins un commit):
 
    `git log --oneline`
->>>>>>> 298212b (RNCP)
 
 
 ## VIII. Documentation de l’API
@@ -296,13 +205,6 @@ Cette partie décrit l'API Flask plus en détails : les routes disponibles, la m
    - `/sales-by-category`
 
 2. Méthode de l'API : Type de la requête HTTP utilisée sur les 3 routes = `GET`.
-<<<<<<< HEAD
-3. Entrée à fournir : L'utilisateur a besoin de fournir une Clé API.
-4. Sortie (ce que l'API renvoie en fonction de sa route) :
-  - `/health` --> renvoie un petit message JSON : {"message": "L'API fonctionne."} 
-  - `/sales-by-country` --> Ventes agrégées par pays (liste d'objets JSON) 
-  - `/sales-by-category` --> Ventes agrégées par catégorie (liste d'objets JSON) 
-=======
 
 3. Entrée à fournir : L'utilisateur a besoin de fournir une Clé API.
 
@@ -311,7 +213,6 @@ Cette partie décrit l'API Flask plus en détails : les routes disponibles, la m
    - `/sales-by-country` --> Ventes agrégées par pays (liste d'objets JSON) 
    - `/sales-by-category` --> Ventes agrégées par catégorie (liste d'objets JSON)
 
->>>>>>> 298212b (RNCP)
 5. Erreur possible : 401 si la clé est invalide ou absente
 
 ### C. Détail des routes
