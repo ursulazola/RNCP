@@ -106,7 +106,7 @@ Comme dit précédemment : Le fichier pipeline contient 3 fonctions afin d'obten
   - transform() contient le nettoyage et la fusion des tables afin d'obtenir le dataframe final et les agrégations sales_by_country et sales_by_category.
   - load() : permet de convertir les dataframes en tables SQL, d'afficher la table principale et les agrégations.
 
-4. `tables_finales.db` : C'est une base SQLite qui contient sept tables :
+4. `tables_finales.db`,c'est une base SQLite qui contient sept tables :
   - Une table factuelle : `orders` (données sur les commandes) qui une fois transformée et fusionnée avec les tables dimensionnelles est nommée `orders_final`.
   - Des tables dimensionnelles : `books_scrap_category` ( données scrapées des livres et les données par catégorie de livre), `countries` (Données par pays), `channels` (Données par canal d'acquisition),  et `exchange_rate` (Les taux de change par date).
   - Des tables des données agrégées : `sales_by_country` (revenus/bénéfices par pays) et `sales_by_category` (revenus/bénéfices par category).
@@ -146,14 +146,13 @@ L'authentification SSH permet de prouver à GitHub que l'on a le droit de publie
 
   1. Aller dans le terminal, accéder au dossier `RNCP` et exécuter le code suivant dedans.
 
-  2. Créer une clé SSH :
-    
-    `ssh-keygen -t ed25519 -C "votre_email@example.com"`
+  2. Créer une clé SSH avec ce code :
 
+    - `ssh-keygen -t ed25519 -C "votre_email@example.com"`
     - Appuyer sur Entrée pour toutes les questions (chemin par défaut, pas de mot de passe).
 
   3. Exécuter ce code dans le terminal afin de récupérer la clé SSH :
-    `cat ~/.ssh/id_ed25519.pub`
+    - `cat ~/.ssh/id_ed25519.pub`
 
   4. Copier la clé affichée en entier (elle commence par `ssh-ed25519`).
 
@@ -166,19 +165,17 @@ L'authentification SSH permet de prouver à GitHub que l'on a le droit de publie
 
   6. Vérifier la connexion SSH :
 
-    `ssh -T git@github.com`
+    - `ssh -T git@github.com`
 
     - À la première connexion, le terminal demande de confirmer l'empreinte de GitHub : répondre `yes`. Un message de confirmation doit apparaître :
 
-    `Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.`
+    - `Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.`
     
   7. Lier le projet local au dépôt GitHub. 
 
     - `git branch -M main`
 
     - `git remote add origin git@github.com:<username>/RNCP.git`
-    
-
 
     - Si le remote existe déjà vous aurez l'erreur « remote origin already exists », exécuter ce code à la place:
 
