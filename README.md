@@ -148,32 +148,32 @@ L'authentification SSH permet de prouver à GitHub que l'on a le droit de publie
 
   2. Créer une clé SSH avec ce code :
 
-  - `ssh-keygen -t ed25519 -C "votre_email@example.com"`
-  - Appuyer sur Entrée pour toutes les questions (chemin par défaut, pas de mot de passe).
+    - `ssh-keygen -t ed25519 -C "votre_email@example.com"`
+    - Appuyer sur Entrée pour toutes les questions (chemin par défaut, pas de mot de passe).
 
   3. Exécuter ce code dans le terminal afin de récupérer la clé SSH :
-  - `cat ~/.ssh/id_ed25519.pub`
+    - `cat ~/.ssh/id_ed25519.pub`
 
   4. Copier la clé affichée en entier (elle commence par `ssh-ed25519`).
 
   5. Ajouter la clé sur GitHub :
 
-  - Aller sur : https://github.com/settings/keys
-  - Cliquer sur `New SSH key`
-  - Donner un titre à la clé, puis coller la clé
-  - Enregistrer
+    - Aller sur : https://github.com/settings/keys
+    - Cliquer sur `New SSH key`
+    - Donner un titre à la clé, puis coller la clé
+    - Enregistrer
 
   6. Vérifier la connexion SSH :
 
-- `ssh -T git@github.com`
-- À la première connexion, le terminal demande de confirmer l'empreinte de GitHub : répondre `yes`. Un message de confirmation doit apparaître :
+    - `ssh -T git@github.com`
+    - À la première connexion, le terminal demande de confirmer l'empreinte de GitHub : répondre `yes`. Un message de confirmation doit apparaître :
   `Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.`
 
   7. Lier le projet local au dépôt GitHub.
 
-- `git branch -M main`[cite: 2, 3]
-- `git remote add origin git@github.com:<username>/RNCP.git`[cite: 2, 3]
-- Si le remote existe déjà vous aurez l'erreur « remote origin already exists », exécuter ce code à la place:
+    - `git branch -M main`
+    - `git remote add origin git@github.com:<username>/RNCP.git`
+    - Si le remote existe déjà vous aurez l'erreur « remote origin already exists », exécuter ce code à la place:
   `git remote set-url origin git@github.com:<username>/RNCP.git`
 
   8. Envoyer le code sur GitHub :
