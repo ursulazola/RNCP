@@ -100,7 +100,7 @@ L'API est lancée mais on ne peut pas encore afficher les données dans le termi
 
 3. `pipeline.py` :
 
-Comme dit précédemment : Le fichier pipeline contient 3 fonctions afin d'obtenir tables_finales.db .
+Le fichier pipeline contient 3 fonctions afin d'obtenir tables_finales.db .
 
   - extract() qui permet de charger les tables depuis les bases de données fournies, de récupérer les données scrapées depuis `https://books.toscrape.com/` et récupérer les taux de change depuis de l'API publique Frankfurter.
   - transform() contient le nettoyage et la fusion des tables afin d'obtenir le dataframe final et les agrégations sales_by_country et sales_by_category.
@@ -144,42 +144,37 @@ L'authentification SSH permet de prouver à GitHub que l'on a le droit de publie
       Dans les commandes ci-dessous, remplacer `<username>` par votre nom d'utilisateur GitHub. 
       On suppose que le dépôt GitHub s'appelle aussi `RNCP`.
 
-  1. Aller dans le terminal, accéder au dossier `RNCP` et exécuter le code suivant dedans.
+1. Aller dans le terminal, accéder au dossier `RNCP` et exécuter le code suivant dedans.
 
   2. Créer une clé SSH avec ce code :
 
-    - `ssh-keygen -t ed25519 -C "votre_email@example.com"`
-    - Appuyer sur Entrée pour toutes les questions (chemin par défaut, pas de mot de passe).
+  - `ssh-keygen -t ed25519 -C "votre_email@example.com"`
+  - Appuyer sur Entrée pour toutes les questions (chemin par défaut, pas de mot de passe).
 
   3. Exécuter ce code dans le terminal afin de récupérer la clé SSH :
-    - `cat ~/.ssh/id_ed25519.pub`
+  - `cat ~/.ssh/id_ed25519.pub`
 
   4. Copier la clé affichée en entier (elle commence par `ssh-ed25519`).
 
   5. Ajouter la clé sur GitHub :
 
-     - Aller sur : https://github.com/settings/keys
-     - Cliquer sur `New SSH key`
-     - Donner un titre à la clé, puis coller la clé
-     - Enregistrer
+  - Aller sur : https://github.com/settings/keys
+  - Cliquer sur `New SSH key`
+  - Donner un titre à la clé, puis coller la clé
+  - Enregistrer
 
   6. Vérifier la connexion SSH :
 
-    - `ssh -T git@github.com`
+- `ssh -T git@github.com`
+- À la première connexion, le terminal demande de confirmer l'empreinte de GitHub : répondre `yes`. Un message de confirmation doit apparaître :
+  `Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.`
 
-    - À la première connexion, le terminal demande de confirmer l'empreinte de GitHub : répondre `yes`. Un message de confirmation doit apparaître :
+  7. Lier le projet local au dépôt GitHub.
 
-    - `Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.`
-    
-  7. Lier le projet local au dépôt GitHub. 
-
-    - `git branch -M main`
-
-    - `git remote add origin git@github.com:<username>/RNCP.git`
-
-    - Si le remote existe déjà vous aurez l'erreur « remote origin already exists », exécuter ce code à la place:
-
-      `git remote set-url origin git@github.com:<username>/RNCP.git`
+- `git branch -M main`[cite: 2, 3]
+- `git remote add origin git@github.com:<username>/RNCP.git`[cite: 2, 3]
+- Si le remote existe déjà vous aurez l'erreur « remote origin already exists », exécuter ce code à la place:
+  `git remote set-url origin git@github.com:<username>/RNCP.git`
 
   8. Envoyer le code sur GitHub :
 
