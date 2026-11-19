@@ -88,7 +88,7 @@ def extract():
         api_reponse = response.json()
         dictionnaire2["order_date"].append(date)
         dictionnaire2["exchange_rate"].append(api_reponse[0]["rate"])
-        df_exchange_rate = pd.DataFrame(dictionnaire2)
+      df_exchange_rate = pd.DataFrame(dictionnaire2)
 
   except ValueError as erreur:
       print(f"Echec de la requête de l'API Frankfurter.\n Statuts code requête : {response.status_code} \n Erreur : {erreur}")
